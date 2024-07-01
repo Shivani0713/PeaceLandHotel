@@ -1,0 +1,602 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <div class="hero medium-height jarallax" data-jarallax data-speed="0.2">
+            <img class="jarallax-img" src="{% static 'img/hero_home_2.jpg'%}" alt="">
+            <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                <div class="container">
+                    <small class="slide-animated one">Luxury Hotel Experience</small>
+                    <h1 class="slide-animated two">ROOM BOOKING</h1>
+                </div>
+            </div>
+        </div>
+        <!-- /Background Img Parallax -->
+
+        <div class="container margin_120_95">
+            <div class="row justify-content-between">
+                <div class="col-xl-12 col-lg-6 order-lg-2">
+                    <div class="contact_info" id="booking_section">
+                        <div class="col-xl-12 col-lg-12 order-lg-1">
+                            <h3 class="mb-3 text-center mb-5 mt-4" style="background: #978667;color: white;">WELCOME TO PEACE LAND HOTEL ROOM BOOKING</h3>
+                            <!-- <div id="message-contact"></div> -->
+                            <form method="POST" id="contactform" autocomplete="off">
+                                {%csrf_token%}
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input class="form-control" type="text" id="name_contact" name="name_contact" placeholder="First Name">
+                                            <label for="name_contact">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input class="form-control" type="text" id="lastname_contact" name="lastname_contact" placeholder="Last Name">
+                                            <label for="lastname_contact">Last name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /row -->
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input class="form-control" type="email" id="email_contact" name="email_contact" placeholder="Email" value="{{bookings.email}}">
+                                            <label for="email_contact">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input class="form-control" type="text" id="phone_contact" name="phone_contact" placeholder="Telephone">
+                                            <label for="phone_contact">Telephone</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /row -->
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input type="text" id="datepicker" class="form-control" name="datepicker" style="padding-bottom: 20px;" value="{{ bookings.date|date:'d-m-Y'}}">
+                                            <label for="phone_contact">From </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input type="text" id="datepickerTo" class="form-control" name="datepickerTo" style="padding-bottom: 20px;" value="{{ bookings.to_date|date:'d-m-Y'}}">
+                                            <label for="phone_contact">To</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <div class="qty-buttons mb-3 version_2 mb-3">
+                                                <input type="button" value="+" class="qtyplus" name="adults_booking">
+                                                <input type="text" name="adults_booking" id="adults_booking" value="{{bookings.adultNo}}" class="qty form-control" placeholder="Adults">
+                                                <input type="button" value="-" class="qtyminus" name="adults_booking">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="qty-buttons version_2 mb-3 ">
+                                            <input type="button" value="+" class="qtyplus" name="childs_booking">
+                                            <input type="text" name="childs_booking" id="childs_booking" value="{{bookings.childNo}}" class="qty form-control" placeholder="Childs">
+                                            <input type="button" value="-" class="qtyminus" name="childs_booking">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="mb-3 qty-buttons mb-3 version_2">
+                                            <div class="custom_select">
+                                                <select class="wide" name="room_type">
+                                                    {% if bookings.room %}
+                                                        <option value="{{ bookings.room }}" selected>{{ bookings.room }}</option>
+                                                    {% else %}
+                                                        <option value="" selected>Select Room</option>
+                                                    {% endif %}
+                                                    {% for room in rooms %}
+                                                        <option value="{{ room.RoomName }}">{{ room.RoomName }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="mb-3 qty-buttons mb-3 version_2">
+                                            <div class="custom_select">
+                                                <select class="wide" name="room_count">
+                                                    {% for room_number in room_numbers%}
+                                                        <option value="{{ room_number }}">{{ room_number }} Room</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input type="text" id="countryInput"  name="country" class="form-control py-0" list="countryList"  placeholder="Country">
+                                            <datalist id="countryList" class="datalist"></datalist>
+                                            <label for="countryInput" class="ps-2 pt-2">Country</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input type="text" id="stateInput" class="form-control py-0"  name="state" list="stateList"  placeholder="State">
+                                            <datalist id="stateList" class="datalist"></datalist>
+                                            <label for="stateInput" class="ps-2 pt-2">State</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input type="text" id="cityInput" list="cityList" name="city" class="form-control py-0"  placeholder="City">
+                                            <datalist id="cityList" class="datalist"></datalist>
+                                            <label for="cityInput" class="ps-2 pt-2">City</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating mb-4">
+                                            <input type="text" class="form-control py-0" placeholder="Pincode" id="code"  name="pincode">
+                                            <label for="code" class="ps-2 pt-2">Pincode</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="mb-3 qty-buttons mb-3 version_2">
+                                            <textarea class="form-control" placeholder="Address" id="address_new" name="address"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <p class="mt-3 text-end"><input type="submit" value="Submit" class="btn_1 outline" id="submit-contact"></p> -->
+                                <p class="mt-3 text-end"><button type="button" onclick="BookForm()" class="btn_1 outline">Book Now</button></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!--/container -->
+        
+    </main>
+    <script>
+        var config = {
+        cUrl: 'https://api.countrystatecity.in/v1/countries',
+        ckey: 'NHhvOEcyWk50N2Vna3VFTE00bFp3MjFKR0ZEOUhkZlg4RTk1MlJlaA=='
+        }
+        window.addEventListener('load', loadCountries);
+        const stateSelect = document.getElementById('stateInput');
+        const citySelect = document.getElementById('cityInput');
+        function loadCountries() {
+        const countryList = document.getElementById('countryList');
+        countryList.style.display = "none"; // Hide the country list initially
+        let apiEndPoint = config.cUrl;
+        fetch(apiEndPoint, { headers: { "X-CSCAPI-KEY": config.ckey } })
+            .then(response => response.json())
+            .then(data => {
+                const countryList = document.getElementById('countryList');
+                const countryInput = document.getElementById('countryInput');
+                if (countryList && countryInput) {
+                    countryList.innerHTML = ''; // Clear previous list items
+                    data.forEach(country => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = country.name;
+                        listItem.classList.add('list-group-item');
+                        countryList.appendChild(listItem);
+                        // Add click event listener to set input value, get country code, and load states
+                        listItem.addEventListener('click', function() {
+                            countryInput.value = country.name; // Set input value to selected country name
+                            // Get country code
+                            const countrycode = country['iso2'];
+                            // console.log(countrycode);
+                            // Call loadStates function with country code
+                            loadStates(countrycode);
+                            hideCountryList(countryList);
+                        });
+                    });
+                    // Add event listener for input changes
+                    countryInput.addEventListener('input', function() {
+                        const searchText = this.value.trim().toLowerCase();
+                        const listItems = countryList.getElementsByTagName('li');
+                        Array.from(listItems).forEach(function(item) {
+                            const countryName = item.textContent.trim().toLowerCase();
+                            if (countryName.includes(searchText)) {
+                                item.style.display = 'block'; // Show matching items
+                            } else {
+                                item.style.display = 'none'; // Hide non-matching items
+                            }
+                        });
+                        if (searchText.length > 0) {
+                            countryList.style.display = 'block'; // Show list when search starts
+                        } else {
+                            hideCountryList(countryList); // Hide list if search is cleared
+                        }
+                    });
+                } else {
+                    console.error('Country list or input element not found.');
+                }
+            })
+            .catch(error => console.error('Error loading countries:', error));
+        }
+        function loadStates(countrycode) {
+        // console.log("state");
+        // console.log(countrycode);
+        var countrycodeNew = countrycode;
+        fetch(`${config.cUrl}/${countrycode}/states`, {headers: {"X-CSCAPI-KEY": config.ckey}})
+        .then(response => response.json())
+            .then(data => {
+                // console.log('States data received from API:', data); // Log the states data received from the API
+                const stateList = document.getElementById('stateList');
+                const stateInput = document.getElementById('stateInput');
+                if (Array.isArray(data)) {
+                    if (stateList && stateInput) {
+                        stateList.innerHTML = ''; // Clear previous list items
+                        data.forEach(state => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = state.name;
+                            listItem.classList.add('list-group-item');
+                            stateList.appendChild(listItem);
+                            // Add click event listener to set input value and hide rest of list on click
+                            listItem.addEventListener('click', function() {
+                                stateInput.value = state.name; // Set input value to selected state name
+                                const statecode = state['iso2'];
+                                // console.log(statecode);
+                                loadCities(statecode,countrycodeNew);
+                                hideStateList(stateList);
+                            });
+                        });
+                        // Add event listener for input changes
+                        stateInput.addEventListener('input', function() {
+                            const searchText = this.value.trim().toLowerCase();
+                            const listItems = stateList.getElementsByTagName('li');
+                            Array.from(listItems).forEach(function(item) {
+                                const stateName = item.textContent.trim().toLowerCase();
+                                if (stateName.includes(searchText)) {
+                                    item.style.display = 'block'; // Show matching items
+                                } else {
+                                    item.style.display = 'none'; // Hide non-matching items
+                                }
+                            });
+                            if (searchText.length > 0) {
+                                stateList.style.display = 'block'; // Show list when search starts
+                            } else {
+                                hideStateList(stateList); // Hide list if search is cleared
+                            }
+                        });
+                    } else {
+                        console.error('State list or input element not found.');
+                    }
+                } else {
+                    console.error('States data received from API is not an array:', data);
+                }
+            })
+            .catch(error => console.error('Error loading states:', error));
+        }
+        function loadCities(selectedState,countrycode) {
+        // console.log(countrycode);
+        fetch(`${config.cUrl}/${countrycode}/states/${selectedState}/cities`, {headers: {"X-CSCAPI-KEY": config.ckey}})
+            .then(response => response.json())
+            .then(data => {
+                // console.log('Cities data received from API:', data); // Log the cities data received from the API
+                const cityList = document.getElementById('cityList');
+                const cityInput = document.getElementById('cityInput');
+                if (Array.isArray(data)) {
+                    if (cityList && cityInput) {
+                        cityList.innerHTML = ''; // Clear previous list items
+                        data.forEach(city => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = city.name;
+                            listItem.classList.add('list-group-item');
+                            cityList.appendChild(listItem);
+                            // Add click event listener to set input value and hide rest of list on click
+                            listItem.addEventListener('click', function() {
+                                cityInput.value = city.name; // Set input value to selected city name
+                                hideCityList(cityList);
+                            });
+                        });
+                        // Add event listener for input changes
+                        cityInput.addEventListener('input', function() {
+                            const searchText = this.value.trim().toLowerCase();
+                            const listItems = cityList.getElementsByTagName('li');
+                            Array.from(listItems).forEach(function(item) {
+                                const cityName = item.textContent.trim().toLowerCase();
+                                if (cityName.includes(searchText)) {
+                                    item.style.display = 'block'; // Show matching items
+                                } else {
+                                    item.style.display = 'none'; // Hide non-matching items
+                                }
+                            });
+                            if (searchText.length > 0) {
+                                cityList.style.display = 'block'; // Show list when search starts
+                            } else {
+                                hideCityList(cityList); // Hide list if search is cleared
+                            }
+                        });
+                    } else {
+                        console.error('City list or input element not found.');
+                    }
+                } else {
+                    console.error('Cities data received from API is not an array:', data);
+                }
+            })
+            .catch(error => console.error('Error loading cities:', error));
+        }
+        function hideCountryList(list) {
+        list.style.display = 'none'; // Hide the country list
+        }
+        function hideStateList(list) {
+        list.style.display = 'none'; // Hide the state list
+        }
+        function hideCityList(list) {
+        list.style.display = 'none'; // Hide the city list
+        }
+        // Call the loadCountries function to start loading countries when the script is executed
+        loadCountries();
+    </script>
+    <!-- <script>
+        function BookForm() {
+            // Get the selected dates
+            var fromDate = document.getElementById('datepicker').value;
+            var toDate = document.getElementById('datepickerTo').value;
+
+            // Convert dates to the YYYY-MM-DD format
+            var formattedFromDate = formatDate(fromDate);
+            var formattedToDate = formatDate(toDate);
+
+            // Set the formatted dates back to the input fields
+            document.getElementById('datepicker').value = formattedFromDate;
+            document.getElementById('datepickerTo').value = formattedToDate;
+
+            // Submit the form
+            document.getElementById('contactform').submit();
+        }
+
+    // Function to format date to YYYY-MM-DD format
+    function formatDate(dateString) {
+        var dateParts = dateString.split("-");
+        var formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+        return formattedDate;
+    }
+    </script> -->
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            flatpickr("#datepicker", { dateFormat: "d-m-Y" });
+            flatpickr("#datepickerTo", { dateFormat: "d-m-Y" });
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+        function validatePhoneNumber(phone) {
+            const phonePattern = /^[0-9]{10}$/; // Adjust the length as needed
+            return phonePattern.test(phone);
+        }
+        function BookForm() {
+            const firstName = document.getElementById('name_contact').value;
+            const lastName = document.getElementById('lastname_contact').value;
+            const email = document.getElementById('email_contact').value;
+            const phone = document.getElementById('phone_contact').value;
+            const fromDate = document.getElementById('datepicker').value;
+            const toDate = document.getElementById('datepickerTo').value;
+            const adults = document.getElementById('adults_booking').value;
+            const children = document.getElementById('childs_booking').value;
+            const roomType = document.querySelector('select[name="room_type"]').value;
+            const roomCount = document.querySelector('select[name="room_count"]').value;
+            const country = document.getElementById('countryInput').value;
+            const state = document.getElementById('stateInput').value;
+            const city = document.getElementById('cityInput').value;
+            const pincode = document.getElementById('code').value;
+            const address = document.getElementById('address_new').value;
+
+            if (!firstName) {
+                alert('Please enter your first name');
+                return false;
+            }
+
+            if (!lastName) {
+                alert('Please enter your last name');
+                return false;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!validatePhoneNumber(phone)) {
+                alert('Please enter a valid phone number with exactly 10 digits');
+                return false;
+            }
+
+            if (!fromDate) {
+                alert('Please select a valid From Date');
+                return false;
+            }
+
+            if (!toDate) {
+                alert('Please select a valid To Date');
+                return false;
+            }
+
+            if (!adults || isNaN(adults) || adults <= 0) {
+                alert('Please enter a valid number of adults');
+                return false;
+            }
+
+            if (!children || isNaN(children) || children < 0) {
+                alert('Please enter a valid number of children');
+                return false;
+            }
+
+            if (!roomType) {
+                alert('Please select a room type');
+                return false;
+            }
+
+            if (!roomCount) {
+                alert('Please select a room count');
+                return false;
+            }
+
+            if (!country) {
+                alert('Please enter your country');
+                return false;
+            }
+
+            if (!state) {
+                alert('Please enter your state');
+                return false;
+            }
+
+            if (!city) {
+                alert('Please enter your city');
+                return false;
+            }
+
+            if (!pincode) {
+                alert('Please enter your pincode');
+                return false;
+            }
+
+            if (!address) {
+                alert('Please enter your address');
+                return false;
+            }
+
+            // Submit the form
+            document.getElementById('contactform').submit();
+        }
+        function formatDate(dateString) {
+            var dateParts = dateString.split("-");
+            var formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+            return formattedDate;
+        }
+    </script> -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            flatpickr("#datepicker", { dateFormat: "d-m-Y" });
+            flatpickr("#datepickerTo", { dateFormat: "d-m-Y" });
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function validatePhoneNumber(phone) {
+            const phonePattern = /^[0-9]{10}$/;
+            return phonePattern.test(phone);
+        }
+
+        function formatDate(dateString) {
+            var dateParts = dateString.split("-");
+            var formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+            return formattedDate;
+        }
+
+        function BookForm() {
+            const firstName = document.getElementById('name_contact').value;
+            const lastName = document.getElementById('lastname_contact').value;
+            const email = document.getElementById('email_contact').value;
+            const phone = document.getElementById('phone_contact').value;
+            const fromDate = document.getElementById('datepicker').value;
+            const toDate = document.getElementById('datepickerTo').value;
+            const adults = document.getElementById('adults_booking').value;
+            const children = document.getElementById('childs_booking').value;
+            const roomType = document.querySelector('select[name="room_type"]').value;
+            const roomCount = document.querySelector('select[name="room_count"]').value;
+            const country = document.getElementById('countryInput').value;
+            const state = document.getElementById('stateInput').value;
+            const city = document.getElementById('cityInput').value;
+            const pincode = document.getElementById('code').value;
+            const address = document.getElementById('address_new').value;
+
+            if (!firstName) {
+                alert('Please enter your first name');
+                return false;
+            }
+
+            if (!lastName) {
+                alert('Please enter your last name');
+                return false;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!validatePhoneNumber(phone)) {
+                alert('Please enter a valid phone number with exactly 10 digits');
+                return false;
+            }
+
+            if (!fromDate) {
+                alert('Please select a valid From Date');
+                return false;
+            }
+
+            if (!toDate) {
+                alert('Please select a valid To Date');
+                return false;
+            }
+
+            if (!adults || isNaN(adults) || adults <= 0) {
+                alert('Please enter a valid number of adults');
+                return false;
+            }
+
+            if (!children || isNaN(children) || children < 0) {
+                alert('Please enter a valid number of children');
+                return false;
+            }
+
+            if (!roomType) {
+                alert('Please select a room type');
+                return false;
+            }
+
+            if (!roomCount) {
+                alert('Please select a room count');
+                return false;
+            }
+
+            if (!country) {
+                alert('Please enter your country');
+                return false;
+            }
+
+            if (!state) {
+                alert('Please enter your state');
+                return false;
+            }
+
+            if (!city) {
+                alert('Please enter your city');
+                return false;
+            }
+
+            if (!pincode) {
+                alert('Please enter your pincode');
+                return false;
+            }
+
+            if (!address) {
+                alert('Please enter your address');
+                return false;
+            }
+
+            // Format dates before submitting
+            document.getElementById('datepicker').value = formatDate(fromDate);
+            document.getElementById('datepickerTo').value = formatDate(toDate);
+
+            // Submit the form
+            document.getElementById('contactform').submit();
+        }
+    </script>
+{%endblock%}

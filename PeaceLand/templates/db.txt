@@ -1,0 +1,31 @@
+1. Booking
+    Comes from ROOM and SUTIES -- date/romm adult child -- done
+    Booking for user -- done
+      Booking pdf --done
+    
+
+2. All images are comes from db -- done
+
+3. Resturant all data comes from db
+    Menu comes from db -- done
+   
+
+4. News and Event comes from db
+
+5. Contact details and About
+
+6. API for state --done 
+
+7. After booking for User and admin  Email-- done
+8. Js for validation -- done 
+9. Employee Login
+
+
+Remains:
+    Menu bills -- pdf
+    News and Event comes from db
+    About
+    Employee Login
+
+Resturant Billing
+Contact emal

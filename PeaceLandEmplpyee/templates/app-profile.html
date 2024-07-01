@@ -1,0 +1,221 @@
+{% extends 'bases.html' %}
+{% block content %}
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">	
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="profile card card-body px-3 pt-3 pb-0">
+                            <div class="profile-head">
+                                <div class="photo-content">
+                                    <div class="cover-photo rounded"></div>
+                                </div>
+                                <div class="profile-info">
+									<div class="profile-photo">
+										<img src="../media/{{employee.EmpImg}}" class="img-fluid rounded-circle" alt="">
+									</div>
+									<div class="profile-details">
+										<div class="profile-name px-3 pt-2">
+											<h4 class="text-primary mb-0">{{employee.EmpFstName}} {{employee.EmpLstName}}</h4>
+											<p>{{employee.designation}}</p>
+										</div>
+										<div class="profile-email px-2 pt-2">
+											<h4 class="text-muted mb-0">{{users.email}}</h4>
+											<p>Email</p>
+										</div>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4">
+						<div class="row">
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="profile-statistics">
+											<div class="text-center">
+												<div class="row">
+													<div class="col">
+														<h3 class="m-b-0">150</h3><span>Sick Leaves</span>
+													</div>
+													<div class="col">
+														<h3 class="m-b-0">140</h3><span>Paid Leaves</span>
+													</div>
+													<div class="col">
+														<h3 class="m-b-0">45</h3><span>Remaining Leaves</span>
+													</div>
+												</div>
+												<!-- <div class="mt-4">
+													<a href="javascript:void(0);" class="btn btn-primary mb-1 me-1">Follow</a> 
+													<a href="javascript:void(0);" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#sendMessageModal">Send Message</a>
+												</div> -->
+											</div>
+											<!-- Modal -->
+											<!-- <div class="modal fade" id="sendMessageModal">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title">Send Message</h5>
+															<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+														</div>
+														<div class="modal-body">
+															<form class="comment-form">
+																<div class="row"> 
+																	<div class="col-lg-6">
+																		<div class="mb-3">
+																			<label class="text-black font-w600 form-label">Name <span class="required">*</span></label>
+																			<input type="text" class="form-control" value="Author" name="Author" placeholder="Author">
+																		</div>
+																	</div>
+																	<div class="col-lg-6">
+																		<div class="mb-3">
+																			<label class="text-black font-w600 form-label">Email <span class="required">*</span></label>
+																			<input type="text" class="form-control" value="Email" placeholder="Email" name="Email">
+																		</div>
+																	</div>
+																	<div class="col-lg-12">
+																		<div class="mb-3">
+																			<label class="text-black font-w600 form-label">Comment</label>
+																			<textarea rows="8" class="form-control" name="comment" placeholder="Comment"></textarea>
+																		</div>
+																	</div>
+																	<div class="col-lg-12">
+																		<div class="mb-3 mb-0">
+																			<input type="submit" value="Post Comment" class="submit btn btn-primary" name="submit">
+																		</div>
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="profile-blog">
+											<h5 class="text-primary d-inline">Phone No:</h5>
+											<h6></h6>
+											<h4>{{employee.PhoneNo}}</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="profile-interest">
+											<h5 class="text-primary d-inline">Address</h5>
+											<div class="row mt-4 sp4" id="lightgallery">{{employee.Address}}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="profile-tab">
+                                    <div class="custom-tab-1">
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="#about-me" data-bs-toggle="tab" class="nav-link  active show">About Me</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="about-me" class="tab-pane fade active show">
+                                                <div class="profile-about-me">
+                                                    <div class="pt-4 border-bottom-1 pb-3">
+                                                        <h4 class="text-primary">About Me</h4>
+                                                        <p class="mb-2">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
+                                                        <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-skills mb-5">
+                                                    <h4 class="text-primary mb-2">Skills</h4>
+                                                    <a href="javascript:void(0);" class="btn btn-primary light btn-xs mb-1">Admin</a>
+                                                    <a href="javascript:void(0);" class="btn btn-primary light btn-xs mb-1">Computer Proficiency</a>
+                                                    <a href="javascript:void(0);" class="btn btn-primary light btn-xs mb-1">Management</a>
+                                                    <a href="javascript:void(0);" class="btn btn-primary light btn-xs mb-1">Human Resource</a>
+                                                    <a href="javascript:void(0);" class="btn btn-primary light btn-xs mb-1">Responsive</a>
+                                                </div>
+                                                <div class="profile-lang  mb-5">
+                                                    <h4 class="text-primary mb-2">Language</h4>
+													<a href="javascript:void(0);" class="text-muted pe-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a> 
+													<a href="javascript:void(0);" class="text-muted pe-3 f-s-16"><i class="flag-icon flag-icon-fr"></i> French</a>
+                                                    <a href="javascript:void(0);" class="text-muted pe-3 f-s-16"><i class="flag-icon flag-icon-bd"></i> Hindi</a>
+                                                </div>
+                                                <div class="profile-personal-info">
+                                                    <h4 class="text-primary mb-4">Personal Information</h4>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Name <span class="pull-end">:</span>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>{{employee.EmpFstName}} {{employee.EmpLstName}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Email <span class="pull-end">:</span>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>{{users.email}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Availability <span class="pull-end">:</span></h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>Full Time</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Age <span class="pull-end">:</span>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>27</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Joining Date <span class="pull-end">:</span></h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>{{employee.JoinDate|date}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-sm-3 col-5">
+                                                            <h5 class="f-w-500">Year Experience <span class="pull-end">:</span></h5>
+                                                        </div>
+                                                        <div class="col-sm-9 col-7"><span>07 Year Experiences</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+{%endblock%}

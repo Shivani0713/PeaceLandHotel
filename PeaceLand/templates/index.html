@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main>
+        <div id="carousel-home">
+            <div class="owl-carousel owl-theme kenburns">
+                <div class="owl-slide background-image cover" data-background="url(/static/CustomImages/Home1.cms)">
+                    <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.2)">
+                        <div class="container">
+                            <div class="row justify-content-center justify-content-md-start">
+                                <div class="col-lg-6 static">
+                                    <div class="slide-text white">
+                                        <small class="owl-slide-animated owl-slide-title">Luxury Hotel Experience</small>
+                                        <h2 class="owl-slide-animated owl-slide-title-2">A unique experience where to stay</h2>
+                                        <div class="owl-slide-animated owl-slide-title-3"><a class="btn_1 outline white mt-3" href="room-list">Read more</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/owl-slide-->
+                <div class="owl-slide background-image cover" data-background="url(/static/CustomImages/Home2.jpg)">
+                    <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.2)">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6 static">
+                                    <div class="slide-text white text-center">
+                                        <small class="owl-slide-animated owl-slide-title">Luxury Hotel Experience</small>
+                                        <h2 class="owl-slide-animated owl-slide-title-2">A truly immersive relax place</h2>
+                                        <div class="owl-slide-animated owl-slide-title-3"><a class="btn_1 outline white mt-3" href="room-list">Read more</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/owl-slide-->
+                <div class="owl-slide background-image cover" data-background="url(/static/CustomImages/Home.jpg)">
+                    <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.2)">
+                        <div class="container">
+                            <div class="row justify-content-center justify-content-md-end">
+                                <div class="col-lg-6 static">
+                                    <div class="slide-text text-end white">
+                                        <small class="owl-slide-animated owl-slide-title">Luxury Hotel Experience</small>
+                                        <h2 class="owl-slide-animated owl-slide-title-2">The experience of unique holidays</h2>
+                                        <div class="owl-slide-animated owl-slide-title-3"><a class="btn_1 outline white mt-3" href="room-list">Read more</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/owl-slide-->
+                </div>
+            </div>
+            <div class="mouse_wp">
+                <a href="#first_section" class="btn_scrollto">
+                    <div class="mouse"></div>
+                </a>
+            </div>
+            <!-- / mouse -->
+        </div>
+        <!--/carousel-->
+
+        <div class="pattern_2">
+            <div class="container margin_120_95" id="first_section">
+                <div class="row justify-content-between flex-lg-row-reverse align-items-center">
+                    <div class="col-lg-5">
+                        <div class="parallax_wrapper">
+                            <img src="/static/img/home_2.jpg" alt="" class="img-fluid rounded-img">
+                            <div data-cue="slideInUp" class="img_over"><span data-jarallax-element="-30"><img src="/static/img/home_1.jpg" alt="" class="rounded-img"></span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="intro">
+                            <div class="title">
+                                <small>About us</small>
+                                <h2>Tailored services and
+                                    the experience of unique holidays</h2>
+                            </div>
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius quod iusto sunt quidem aspernatur. Laborum.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto totam, fugit adipisci facere, eaque nulla blanditiis esse sequi doloremque qui, ea id corporis sapiente.</p>
+                            <p><em>Peace Land...the Owner</em></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Row -->
+            </div>
+            <div class="pinned-image pinned-image--medium">
+                <div class="pinned-image__container" id="section_video">
+                    <video loop="loop" muted="muted" id="video_home">
+                        <source src="/static/video/sunset.mp4" type="video/mp4">
+                        <source src="/static/video/sunset.webm" type="video/webm">
+                        <source src="/static/video/sunset.ogv" type="video/ogg">
+                    </video>
+                    <div class="pinned-image__container-overlay"></div>
+                </div>
+                <div class="pinned_over_content">
+                    <div class="title white">
+                        <small data-cue="slideInUp" data-delay="200">Luxury Hotel Experience</small>
+                        <h2 data-cue="slideInUp" data-delay="300">Enjoy in a very<br> Immersive Relax</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- /pinned content -->
+        </div>
+        <!-- /Pattern -->
+
+        <div class="container margin_120_95">
+            <div class="title mb-4">
+                <small data-cue="slideInUp">Luxury experience</small>
+                <h2 data-cue="slideInUp" data-delay="200">Rooms & Suites</h2>
+            </div>
+            <div data-cues="zoomIn" data-delay="200">
+                <div class="owl-carousel owl-theme carousel_item_centered_rooms rounded-img">
+                    {%for room in rooms %}
+                        <div class="item">
+                            <a href="room-details-booking/{{room.id}}" class="box_cat_rooms">
+                                <figure>
+                                    <div class="background-image" data-background="url(../media/{{room.RoomImgM}})"></div>
+                                    <div class="info">
+                                        <small>From Rs {{room.RoomPrice}}</small>
+                                        <h3>{{room.RoomName}}</h3>
+                                        <span></span>
+                                    </div>
+                                </figure>
+                            </a>
+                        </div>
+                    {%endfor%}
+                    <!-- /item-->
+                </div>
+                <!-- /carousel-->
+            </div>
+            <p class="text-end mt-2"><a href="/room-list" class="btn_1 outline">View all rooms</a></p>
+        </div>
+        <!-- /container-->
+
+        <div class="marquee">
+            <div class="track">
+                <div class="content">&nbsp;Relax Enjoy Luxury Holiday Travel Discover Experience Relax Enjoy Luxury Holiday Travel Discover Experience Relax Enjoy Luxury Holiday Travel Discover Experience Relax Enjoy Luxury Holiday Travel Discover Experience</div>
+            </div>
+        </div>
+        <!-- /marquee-->
+
+        <div class="bg_white">
+            <div class="container margin_120_95">
+                <div class="row justify-content-between d-flex align-items-center add_bottom_90">
+                    <div class="col-lg-6">
+                        <div class="pinned-image rounded_container pinned-image--small mb-4">
+                            <div class="pinned-image__container">
+                                <img src="/static/CustomImages/Resturant.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="title">
+                            <small>Local Amenities</small>
+                            <h3>Restaurants</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam sed, culpa voluptates omnis ullam aut saepe amet eligendi fugiat hic minus, nam consectetur quidem.</p>
+                            <p><a href="about" class="btn_1 mt-1 outline">Read more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /row-->
+                <div class="row justify-content-between d-flex align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="pinned-image rounded_container pinned-image--small mb-4">
+                            <div class="pinned-image__container">
+                                <img src="/static/CustomImages/art.jpg" alt="" style="object-fit: fill;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 order-lg-1">
+                        <div class="title">
+                            <small>Local Amenities</small>
+                            <h3>Art & Culture</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <p><a href="about" class="btn_1 mt-1 outline">Read more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /row-->
+            </div>
+            <!-- /container-->
+        </div>
+        <!-- /bg_white -->
+
+        <div class="parallax_section_1 jarallax" data-jarallax data-speed="0.2">
+            <img class="jarallax-img kenburns-2" src="/static/img/hero_home_1.jpg" alt="">
+            <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="title white">
+                                <small class="mb-1">Testimonials</small>
+                                <h2>What Clients Says</h2>
+                            </div>
+                            <div class="carousel_testimonials owl-carousel owl-theme nav-dots-orizontal">
+                                <div>
+                                    <div class="box_overlay">
+                                        <div class="pic">
+                                            <figure><img src="/static/CustomImages/client3.jfif" alt="" class="img-circle" style="height: 100%;">
+                                            </figure>
+                                            <h4>Shivani<small>12 Nov 2023</small></h4>
+                                        </div>
+                                        <div class="comment">
+                                           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, deleniti dolor? Porro quod sed eos cumque veniam! Deserunt maiores exercitationem perspiciatis facere esse itaque!"
+                                        </div>
+                                    </div>
+                                    <!-- End box_overlay -->
+                                </div>
+                                <div>
+                                    <div class="box_overlay">
+                                        <div class="pic">
+                                            <figure><img src="/static/CustomImages/client2.jfif" alt="" class="img-circle">
+                                            </figure>
+                                            <h4>Amar<small>2 Jan 2024</small></h4>
+                                        </div>
+                                        <div class="comment">
+                                            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non inventore optio odio doloremque sed dolor quas nesciunt aliquid quo sequi, dolorum cumque officia dolore."
+                                        </div>
+                                    </div>
+                                    <!-- End box_overlay -->
+                                </div>
+                                <div>
+                                    <div class="box_overlay">
+                                        <div class="pic">
+                                            <figure><img src="/static/CustomImages/client1.jfif" alt="" class="img-circle">
+                                            </figure>
+                                            <h4>Suman<small>3 Dec 2024</small></h4>
+                                        </div>
+                                        <div class="comment">
+                                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio sint, voluptatibus esse perferendis molestias enim vel ipsam excepturi deleniti, iure repellat facilis, eaque praesentium."
+                                        </div>
+                                    </div>
+                                    <!-- End box_overlay -->
+                                </div>
+                            </div>
+                            <!-- End carousel_testimonials -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /parallax_section_1-->
+
+        <div class="container margin_120_95" id="booking_section">
+            <div class="row justify-content-between">
+                <div class="col-xl-4">
+                    <div data-cue="slideInUp">
+                        <div class="title">
+                            <small>Paradise Hotel</small>
+                            <h2>Check Availability</h2>
+                        </div>
+                        <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. </p>
+                        <p class="phone_element no_borders"><a href="tel:+{%for p in contacts%}{{p.phoneNo}}{%endfor%}"><i class="bi bi-telephone"></i><span><em>Info and bookings</em>{%for p in contacts%}{{p.phoneNo}}{%endfor%}</span></a></p>
+                    </div>
+                </div>
+                <div class="col-xl-7">
+                    <div data-cue="slideInUp" data-delay="200">
+                        <form method="POST" id="bookingForm">
+                            {%csrf_token%}
+                            <div class="booking_wrapper">
+                                <div class="row">
+                                    <div class="col-5 mb-2">
+                                        <!-- <input type="hidden" id="date_booking" name="date_booking"> -->
+                                        <input type="text" id="datepicker" name="datepicker" style="border: white; height: 40px; padding-left: 10px; width: 100%;" value=" Select From Date">
+                                    </div>
+                                    <div class="col-5 mb-2">
+                                        <!-- <input type="hidden" id="date_booking" name="date_booking"> -->
+                                        <input type="text" id="datepickerTo" name="datepickerTo" style="border: white; height: 40px; padding-left: 10px; width: 100%;" value=" Select To Date">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 mb-2">
+                                        <!-- <input type="hidden" id="date_booking" name="date_booking"> -->
+                                        <input type="emal" name="emailId" class="form-control" placeholder="Email Id">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="custom_select">
+                                            <select class="wide" name="room_type">
+                                                <option value="">Select Room</option>
+                                                {% for room in rooms %}
+                                                    <option value="{{ room.RoomName }}">{{ room.RoomName }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="qty-buttons mb-3 version_2">
+                                                    <input type="button" value="+" class="qtyplus" name="adults_booking">
+                                                    <input type="text" name="adults_booking" id="adults_booking" value="" class="qty form-control" placeholder="Adults">
+                                                    <input type="button" value="-" class="qtyminus" name="adults_booking">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3 qty-buttons mb-3 version_2">
+                                                    <input type="button" value="+" class="qtyplus" name="childs_booking">
+                                                    <input type="text" name="childs_booking" id="childs_booking" value="" class="qty form-control" placeholder="Childs">
+                                                    <input type="button" value="-" class="qtyminus" name="childs_booking">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / row -->
+                            <!-- <p class="text-end mt-4"><a href="room-book" class="btn_1 outline">Book Now</a></p> -->
+                            <p class="text-end mt-4"><button type="button" onclick="submitForm()" class="btn_1 outline">Book Now</button></p>
+                        </form>
+                    </div>
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+
+    </main>
+    <!-- <div class="popup_wrapper">
+        <div class="popup_content newsletter_c">
+            <span class="popup_close"><i class="bi bi-x"></i></span> 
+                <div class="row g-0">
+                    <div class="col-md-5 d-none d-md-flex align-items-center justify-content-center">
+                        <figure><img src="static/img/modal_img.jpg" alt=""></figure>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="content">
+                            <div class="wrapper">
+                            <img src="static/img/logo_sticky.png" width="135" height="45" alt="">
+                            <h3>Sign up our Newsletter</h3>
+                            <p>Ne qui aliquam probatus moderatius, ad sint cotidieque qui, sea id cetero laoreet principes.</p>
+                             <form action="#">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Enter your email address">
+                                </div>              
+                                <button type="submit" class="btn_1 mt-2 mb-4">Subscribe</button>
+                             </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div> -->
+{%endblock%}

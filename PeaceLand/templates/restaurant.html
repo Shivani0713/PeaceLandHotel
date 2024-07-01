@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main>
+        <div class="hero small-height jarallax" data-jarallax data-speed="0.2">
+            <img class="jarallax-img" src="/static/CustomImages/Resturant1.jpg" alt="">
+            <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.2)">
+                <div class="container">
+                    <small class="slide-animated one">Luxury Hotel Experience</small>
+                    <h1 class="slide-animated two">Restaruant PEACE LAND</h1>
+                </div>
+            </div>
+        </div>
+       <div class="container margin_120_95">
+          <div class="row justify-content-between align-items-center">
+              <div class="col-lg-5">
+                  <div class="intro">
+                      <div class="title">
+                          <small>PEACE LAND Hotel</small>
+                          <h2>The Restaurant</h2>
+                      </div>
+                      <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab.</p>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>
+                      <p><em>Enjoy...the Chef</em></p>
+                  </div>
+              </div>
+            <div class="col-lg-5">
+                <div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="d-flex justify-content-between mb-2 text-end">
+                            <strong>Breakfast</strong> <span>7.00am – 10.30am</span>
+                        </li>
+                        <li class="d-flex justify-content-between mb-2 text-end">
+                            <strong>Lunch</strong>  <span>12.00am – 2.00pm</span>
+                        </li>
+                        <li class="d-flex justify-content-between mb-2 text-end">
+                            <strong>Dinner</strong>  <span>open from 7.30pm<br><small>(kitchen close at 11.30pm)</small></span>
+                        </li>
+                    </ul>
+                    <p class="phone_element"><a href="tel://423424234"><i class="bi bi-telephone"></i><span><em>Reservations</em>+41 934 121 1334</span></a></p>
+                </div>
+              </div>
+          </div>
+          <!-- /Row -->
+      </div>
+      <!-- /container -->
+
+        <div class="pattern_3">
+            <div class="container margin_120_95" id="first_section">
+                <div class="title text-center mb-5">
+                      <small data-cue="slideInUp">PEACE Land Hotel</small>
+                      <h2 data-cue="slideInUp" data-delay="100">Restaruant Menu</h2>
+                </div>
+              <div class="tabs_menu" data-cue="slideInUp" data-delay="200">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a id="tab-A" href="#pane-A" class="nav-link active" data-bs-toggle="tab" role="tab">Starters</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab-B" href="#pane-B" class="nav-link" data-bs-toggle="tab" role="tab">Main Dishes</a>
+                        </li>
+                         <li class="nav-item">
+                            <a id="tab-C" href="#pane-C" class="nav-link" data-bs-toggle="tab" role="tab">Desserts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="tab-D" href="#pane-D" class="nav-link" data-bs-toggle="tab" role="tab">Drinks</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content add_bottom_25" role="tablist">
+                        <div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
+                            <div class="card-header" role="tab" id="heading-A">
+                                <h5>
+                                    <a class="collapsed" data-bs-toggle="collapse" href="#collapse-A" aria-expanded="true" aria-controls="collapse-A">
+                                        Starters
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+                                <div class="card-body">
+                                    <div class="banner background-image" data-background="url(/static/img/restaurant/banner_bg_2.jpg)">
+                                        <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+                                            <div>
+                                               <small>Starters Special Offer</small>
+                                                <h3>Mix Starters Menu Rs.450 only</h3>
+                                                <p>Cold Cofee, Spring Roll and Paneer Tikka Masala</p>
+                                                <a href="menu-of-the-day" class="btn_1">View Menu</a>
+                                            </div>
+                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                        </div>
+                                        <!-- /wrapper -->
+                                    </div>
+                                    <!-- /banner -->
+                                    <div class="row magnific-gallery add_top_30">
+                                        {% for dish in s%}
+                                            <div class="col-lg-6">
+                                                <div class="menu_item">
+                                                    <figure>
+                                                        <a href="media/{{dish.DishImage}}" title="{{dish.DishName}}" data-fslightbox="gallery_1" data-type="image">
+                                                            <img src="media/{{dish.DishImage}}" alt="">
+                                                        </a>
+                                                    </figure>
+                                                    <div class="menu_title">
+                                                        <h3>{{dish.DishName}}</h3><em>Rs {{dish.DishPrice}}</em>
+                                                    </div>
+                                                    <p>{{dish.DishDetails}}</p>
+                                                </div>
+                                            </div>
+                                        {%endfor%}
+                                    </div>
+                                    <!-- /row -->
+                                </div>
+                                <!-- /card-body -->
+                            </div>
+                        </div>
+                        <!-- /tab -->
+                        <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+                            <div class="card-header" role="tab" id="heading-B">
+                                <h5>
+                                    <a class="collapsed" data-bs-toggle="collapse" href="#collapse-B" aria-expanded="false" aria-controls="collapse-B">
+                                        Main Dishes
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+                                <div class="card-body">
+                                    <div class="banner background-image" data-background="url(/static/img/restaurant/banner_bg.jpg)">
+                                        <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                                            <div>
+                                                <small>Special Offer</small>
+                                                <h3>Dal Makhani Rs 420 only</h3>
+                                                <p>Naan, Seasonal Veg, Dal Makhani</p>
+                                                <a href="menu-of-the-day" class="btn_1">View Menu</a>
+                                            </div>
+                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                        </div>
+                                        <!-- /wrapper -->
+                                    </div>
+                                    <!-- /banner -->
+                                    <div class="row magnific-gallery add_top_30">
+                                        {%for dish in m%}
+                                            <div class="col-lg-6">
+                                                <div class="menu_item">
+                                                    <figure>
+                                                        <a href="media/{{dish.DishImage}}" title="{{dish.DishName}}" data-fslightbox="gallery_2" data-type="image">
+                                                            <img src="media/{{dish.DishImage}}" alt="">
+                                                        </a>
+                                                    </figure>
+                                                    <div class="menu_title">
+                                                        <h3>{{dish.DishName}}</h3><em>Rs {{dish.DishPrice}}</em>
+                                                    </div>
+                                                    <p>{{dish.DishDetails}}</p>
+                                                </div>
+                                            </div>
+                                        {%endfor%}
+                                    </div>
+                                    <!-- /row -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /tab -->
+                        <div id="pane-C" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-C">
+                            <div class="card-header" role="tab" id="heading-C">
+                                <h5>
+                                    <a class="collapsed" data-bs-toggle="collapse" href="#collapse-C" aria-expanded="false" aria-controls="collapse-C">
+                                        Desserts and Drinks
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapse-C" class="collapse" role="tabpanel" aria-labelledby="heading-C">
+                                <div class="card-body">
+                                    <div class="banner background-image" data-background="url(/img/restaurant/banner_bg_3.jpg)">
+                                        <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                                            <div>
+                                                <small>Desserts Special Offer</small>
+                                                <h3>Mix Cakes Rs 350 only</h3>
+                                                <p>Cheese cake, Muffin, Sweet bread</p>
+                                                <a href="menu-of-the-day" class="btn_1">View Menu</a>
+                                            </div>
+                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                        </div>
+                                        <!-- /wrapper -->
+                                    </div>
+                                    <!-- /banner -->
+                                    <div class="row magnific-gallery add_top_30">
+                                        {%for dish in ds %}
+                                            <div class="col-lg-6">
+                                                <div class="menu_item">
+                                                    <figure>
+                                                        <a href="media/{{dish.DishImage}}" title="{{dish.DishName}}" data-fslightbox="gallery_3" data-type="image">
+                                                            <img src="media/{{dish.DishImage}}" alt="">
+                                                        </a>
+                                                    </figure>
+                                                    <div class="menu_title">
+                                                        <h3>{{dish.DishName}}</h3><em>Rs {{dish.DishPrice}}</em>
+                                                    </div>
+                                                    <p>{{dish.DishDetails}}</p>
+                                                </div>
+                                            </div>
+                                        {%endfor%}
+                                    </div>
+                                    <!-- /row -->
+                                </div>
+                            </div>
+                        </div>
+                        <div id="pane-D" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-D">
+                            <div class="card-header" role="tab" id="heading-D">
+                                <h5>
+                                    <a class="collapsed" data-bs-toggle="collapse" href="#collapse-D" aria-expanded="false" aria-controls="collapse-D">
+                                        Desserts and Drinks
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapse-D" class="collapse" role="tabpanel" aria-labelledby="heading-D">
+                                <div class="card-body">
+                                    <div class="banner background-image" data-background="url(/img/restaurant/banner_bg_3.jpg)">
+                                        <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                                            <div>
+                                                <small>Desserts Special Offer</small>
+                                                <h3>Cold Coffee Rs 50 only</h3>
+                                                <p>Cheese cake, Muffin, Sweet bread</p>
+                                                <a href="menu-of-the-day" class="btn_1">View Menu</a>
+                                            </div>
+                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                        </div>
+                                        <!-- /wrapper -->
+                                    </div>
+                                    <!-- /banner -->
+                                    <div class="row magnific-gallery add_top_30">
+                                        {%for dish in dr %}
+                                            <div class="col-lg-6">
+                                                <div class="menu_item">
+                                                    <figure>
+                                                        <a href="media/{{dish.DishImage}}" title="{{dish.DishName}}" data-fslightbox="gallery_3" data-type="image">
+                                                            <img src="media/{{dish.DishImage}}" alt="">
+                                                        </a>
+                                                    </figure>
+                                                    <div class="menu_title">
+                                                        <h3>{{dish.DishName}}</h3><em>Rs {{dish.DishPrice}}</em>
+                                                    </div>
+                                                    <p>{{dish.DishDetails}}</p>
+                                                </div>
+                                            </div>
+                                        {%endfor%}
+                                    </div>
+                                    <!-- /row -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /tab -->
+                    </div>
+                    <!-- /tab-content -->
+              </div>
+              <!-- /tabs_menu-->
+
+                <p class="text-center mt-5"><a href="menu-of-the-day" class="btn_1 outline">View Day Menu</a></p>
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /pattern -->
+
+    </main>
+{%endblock%}

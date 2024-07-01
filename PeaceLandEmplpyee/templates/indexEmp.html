@@ -1,0 +1,150 @@
+{% extends 'bases.html' %}
+{% block content %}
+	<div class="content-body">
+		<!-- row -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="row">
+								{% for var in room_count %}
+									<div class="col-xl-3 col-sm-6">
+										<div class="card booking">
+											<div class="card-body">
+												<div class="booking-status d-flex align-items-center">
+													<span>
+														<svg xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewBox="0 0 28 20">
+															<path  d="M27,14V7a1,1,0,0,0-1-1H6A1,1,0,0,0,5,7v7a3,3,0,0,0-3,3v8a1,1,0,0,0,2,0V24H28v1a1,1,0,0,0,2,0V17A3,3,0,0,0,27,14ZM7,8H25v6H24V12a2,2,0,0,0-2-2H19a2,2,0,0,0-2,2v2H15V12a2,2,0,0,0-2-2H10a2,2,0,0,0-2,2v2H7Zm12,6V12h3v2Zm-9,0V12h3v2ZM4,17a1,1,0,0,1,1-1H27a1,1,0,0,1,1,1v5H4Z" transform="translate(-2 -6)" fill="var(--primary)"/>
+														</svg>
+													</span>
+													<div class="ms-4">
+														<h2 class="mb-0 font-w600">{{var.bookings}}</h2>
+														<p class="mb-0 text-nowrap">Booked {{var.roomName}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								{%endfor%}
+							</div>
+						</div>
+						<div class="col-xl-12">
+							<div class="row">
+								<div class="col-xl-6">
+									<div class="card">
+										<div class="card-header border-0 pb-0">
+											<h4 class="fs-20">Recent Booking Schedule</h4>
+										</div>
+										<div class="card-body pb-2 loadmore-content" id="BookingContent">
+											<div class="text-center event-calender border-bottom booking-calender">
+												<input type='text' class="form-control d-none " id='datetimepicker1' />
+											</div>	
+											{% for var in five_user%}
+											<div class="rooms mt-3 d-flex align-items-center justify-content-between flex-wrap">
+												<div class="d-flex align-items-center mb-3">
+														<img src="/media/{{var.img}}" alt="">
+														<div class="ms-4 bed-text">
+															<h4>{{var.fst}}&nbsp;{{var.lst}}</h4>
+															<div class="users d-flex align-items-center">
+																<!-- <img src="../static/files/images/users/user1.jpg" alt=""> -->
+																<div>
+																	<span class="fs-16 font-w500 me-3">{{var.rooms}}</span>
+																	<!-- <span>12min ago</span> -->
+																</div>
+															</div>
+														</div>
+													</div>
+													<span class="date bg-secondary mb-3" style="width: 18%;">{{var.status}}</span>
+												</div>
+											{%endfor%}
+										</div>
+									</div>
+								</div>
+								<div class="col-xl-6">
+									<div class="row">
+										<div class="col-xl-6 col-sm-6">
+											<div class="card bg-secondary">
+												<div class="card-body">
+													<div class="d-flex align-items-end pb-4 justify-content-between">
+														<span class="fs-14 font-w500 text-white">Available Room Today</span>
+														<span class="fs-20 font-w600 text-white"><span class="pe-2"></span>{{total_room_sum}}</span>
+													</div>
+													<div class="progress default-progress h-auto">
+														<div class="progress-bar bg-white progress-animated" style="width: 60%; height:13px;" role="progressbar">
+															<span class="sr-only">60% Complete</span>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-6 col-sm-6">
+											<div class="card bg-secondary">
+												<div class="card-body">
+													<div class="d-flex align-items-end pb-4 justify-content-between">
+														<span class="fs-14 font-w500 text-white">Remaining Room Today</span>
+														<span class="fs-20 font-w600 text-white"><span class="pe-2"></span>{{remain_room_sum}}</span>
+													</div>
+													<div class="progress default-progress h-auto">
+														<div class="progress-bar bg-white progress-animated" style="width: 30%; height:13px;" role="progressbar">
+															<span class="sr-only">30% Complete</span>
+														</div>
+													</div>	
+												</div>
+											</div>
+										</div>
+										<!-- <div class="col-xl-12">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<div class="col-xl-3 col-sm-3 col-6 mb-4 col-xxl-6">
+															<div class="text-center">
+																<h3 class="fs-28 font-w600">569</h3>
+																<span class="fs-16">Total Concierge</span>
+															</div>
+														</div>
+														<div class="col-xl-3 col-sm-3 col-6 mb-4 col-xxl-6">
+															<div class="text-center">
+																<h3 class="fs-28 font-w600">2,342</h3>
+																<span class="fs-16">Total Customer</span>
+															</div>
+														</div>
+														<div class="col-xl-3 col-sm-3 col-6 mb-4 col-xxl-6">
+															<div class="text-center">
+																<h3 class="fs-28 font-w600">992</h3>
+																<span class="fs-16">Total Room</span>
+															</div>
+														</div>
+														<div class="col-xl-3 col-sm-3 col-6 mb-4 col-xxl-6">
+															<div class="text-center">
+																<h3 class="fs-28 font-w600">76k</h3>
+																<span class="fs-16 wspace-no">Total Transaction</span>
+															</div>
+														</div>
+														<div class="mb-5 mt-4 d-flex align-items-center">
+															<div>
+																<h4><a href="javascript:void(0);" class="text-secondary">Let Travl Generate Your Annualy Report Easily</a></h4>
+																<span class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 		incididunt ut labo
+																</span>
+															</div>
+															<div><a href="javascript:void(0);" class="ms-5"><i class="fas fa-arrow-right fs-20"></i></a></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--**********************************
+		Content body end
+	***********************************-->
+		
+{%endblock%}

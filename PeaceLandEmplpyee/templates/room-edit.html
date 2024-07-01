@@ -1,0 +1,187 @@
+{% extends "bases.html"%}
+	{% block content %}
+		<!--**********************************
+			Content body start
+		***********************************-->
+		<div class="content-body">
+			<!-- row -->
+			<div class="container-fluid">
+				<div class="row mt-4">
+					<div class="col-xl-12">
+						<div class="row">
+								<div class="col-xl-12">
+									<div class="card overflow-hidden">
+										{% for room in allRoom%}
+											<div class="row m-0">
+												<div class="col-xl-6 p-0">
+													<div class="card-body">
+														<div class="d-flex flex-wrap">
+															<div class="mt-4 check-status">
+																<span class="d-block mb-2">Room Info</span>	
+																<h4 class="font-w500 fs-24">{{room.RoomName}}</h4>
+															</div>
+															<div class="mt-4 ms-3">
+																<span class="d-block mb-2 text-black">Price</span>	
+																<span class="font-w500 fs-24 text-black">Rs{{room.RoomPrice}}<small class="fs-14 ms-2 text-secondary">/night</small></span>
+															</div>
+														</div>
+														<p class="mt-2">{{room.RoomInfo}}</p>
+														<div class="facilities">
+															<div class="mb-3 ">
+																<span class="d-block mb-3">Facilities</span>
+																{% for var in amenities_room%}
+																	{% for vars in var.amenities%}
+																		<a href="javascript:void(0);" class="btn btn-secondary light btn-lg">
+																			{{vars.name}}
+																		</a>
+																	{%endfor%}
+																{%endfor%}
+															</div>	
+														</div>
+													</div>
+												</div>
+												<div class="col-xl-6 p-0">
+													<div class="guest-carousel owl-carousel owl-carousel owl-loaded owl-drag owl-dot">
+														<div class="item">
+															<div class="rooms">
+																<img src="/media/{{room.RoomImgM}}" alt="" style="width: 100%;">
+																<div class="booked">
+																	<p class="fs-20 font-w500">BOOKED</p>
+																</div>
+																<div class="img-content">
+																	<h4 class="fs-24 font-w600 text-white">Bed Room</h4>
+																	<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci</p>	
+																</div>
+															</div>
+														</div>
+														<div class="item">
+															<div class="rooms">
+																<img src="images/gallery/hotel2.jpg" alt="">
+																<div class="img-content">
+																	<h4 class="fs-24 font-w500 text-white">Bed Room</h4>
+																	<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci</p>	
+																</div>
+															</div>
+														</div>
+														<div class="item">
+															<div class="rooms">
+																<img src="images/gallery/hotel3.jpg" alt="">
+																<div class="img-content">
+																	<h4 class="fs-24 font-w500 text-white">Bed Room</h4>
+																	<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci</p>	
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										{%endfor%}
+									</div>
+								</div>
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-header border-0">
+										<h4 class="fs-20">Room Booking History</h4>
+									</div>
+									<div class="card-body pt-0">
+										{% for booking in bookings%}
+											<div class="row align-items-center">
+												<div class="col-xl-4 col-sm-7">
+													<div class="purchase-history d-flex align-items-center">
+														<div class="ms-3">
+															<h4 class="guest-text font-w500">{{booking.fstname}}</h4>
+														</div>
+													</div>
+												</div>
+												<div class="col-xl-2 col-sm-5 col-6">
+													<div class="ms-0 ms-sm-2">
+														<span class="d-block">Check In</span>
+														<span class="guest-text font-w500">{{booking.date}}</span>
+													</div>
+												</div>
+												<div class="col-xl-2 col-sm-4 col-6">
+													<div>
+														<span class="d-block">Check Out</span>
+														<span class="guest-text font-w500">{{booking.to_date}}</span>
+													</div>
+												</div>
+												<div class="col-xl-2 col-sm-4 col-6">
+													<div class="mt-sm-0 mt-3">
+														<span class="d-block mb-2 text-black">Price</span>	
+														<span class="font-w500 fs-24 text-black">Rs{{price}}<small class="fs-14 ms-2 text-secondary">/night</small></span>
+													</div>
+												</div>
+												<div class="col-xl-2 col-sm-4 col-6">
+													<div class="d-flex align-items-center mt-sm-0 mt-3">
+														<a href="javascript:void(0);" class="btn btn-secondary light">{{booking.status}}</a>
+														<div class="dropdown dropend ms-auto">
+															<a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+																<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																	<path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																	<path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																</svg>
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										{%endfor%}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--**********************************
+			Content body end
+		***********************************-->
+{%endblock%}
+	<script>
+		function TravlCarousel()
+			{
+
+				/*  testimonial one function by = owl.carousel.js */
+				jQuery('.guest-carousel').owlCarousel({
+					loop:false,
+					margin:15,
+					nav:true,
+					autoplaySpeed: 3000,
+					navSpeed: 3000,
+					paginationSpeed: 3000,
+					slideSpeed: 3000,
+					smartSpeed: 3000,
+					autoplay: false,
+					animateOut: 'fadeOut',
+					dots:true,
+					navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+					responsive:{
+						0:{
+							items:1
+						},
+						
+						480:{
+							items:1
+						},			
+						
+						767:{
+							items:1
+						},
+						1750:{
+							items:1
+						},
+						1920:{
+							items:1
+						},
+					}
+				})
+			}
+
+			jQuery(window).on('load',function(){
+				setTimeout(function(){
+					TravlCarousel();
+				}, 1000); 
+			});
+	</script>

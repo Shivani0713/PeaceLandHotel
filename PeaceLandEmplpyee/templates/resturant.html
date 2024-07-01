@@ -1,0 +1,212 @@
+{% extends "bases.html"%}
+	{% block content %}
+		<!--**********************************
+			Content body start
+		***********************************-->
+		<div class="content-body">
+			<!-- row -->
+			<div class="container-fluid">
+				<div class="row mt-4">
+					<div class="col-xl-12">
+						<div class="row">
+							<div class="col-xl-12">
+								<div class="card">
+									<div class="card-header border-0">
+										<h4 class="fs-20">Resturant booking details</h4>
+									</div>
+									<div class="card-body pt-0">
+										<form class="needs-validation" novalidate  method="post" >
+											{% csrf_token %}
+											<div class="row">
+												<div class="col-xl-6">
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="name">Name
+															<span class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control" name="name" placeholder="Please enter a Name." required>
+															<div class="invalid-feedback">
+																Please enter a First Name.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="email">Email <span
+																class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control"  name="email" placeholder="Please enter a Email." required>
+															<div class="invalid-feedback">
+																Please enter a Email.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="FoodName">FoodName<span
+																class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control" name="FoodName" placeholder="Please enter a FoodName.">
+															<div class="invalid-feedback">
+																Please enter a FoodName.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="VegName">VegName
+															<span class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control"  name="VegName" placeholder="Please enter a Vegetable name." required>
+															<div class="invalid-feedback">
+																Please enter VegName.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="StarterName">StarterName
+															<span class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control"  name="StarterName" placeholder="Write Starter Name" required>
+															<div class="invalid-feedback">
+																Please enter a StarterName.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="DessertName">DessertName <span
+																class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control" name="DessertName"  placeholder="Please enter DessertName." required>
+															<div class="invalid-feedback">
+																Please enter a DessertName.
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xl-6">
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="phoneNo">Contact No
+															<span class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="number" class="form-control" name="phoneNo" placeholder="Please enter a Contact Number" required>
+															<div class="invalid-feedback">
+																Please enter a Contact Number.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="address">Address <span
+																class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<textarea class="form-control"  name="address" rows="5" placeholder="Please enter a Address" required>{{update.address}}</textarea>
+															<div class="invalid-feedback">
+																Please enter a Address.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="RoomNo">RoomNo
+															<span class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control" name="RoomNo" placeholder="Please enter RoomNo." required>
+															<div class="invalid-feedback">
+																Please enter a RoomNo.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="BreadName">BreadName <span
+																class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control" name="BreadName" placeholder="Please enter BreadName." required>
+															<div class="invalid-feedback">
+																Please enter a BreadName.
+															</div>
+														</div>
+													</div>
+													<div class="mb-3 row">
+														<label class="col-lg-4 col-form-label" for="DrinkName">DrinkName <span
+																class="text-danger">*</span>
+														</label>
+														<div class="col-lg-6">
+															<input type="text" class="form-control" name="DrinkName"  placeholder="Please enter DrinkName." required>
+															<div class="invalid-feedback">
+																Please enter a DrinkName.
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xl-12">
+													<div class="my-5 row">
+														<div class="col-lg-12 ms-auto text-center">
+															<input type="submit" class="btn btn-primary" value="Save">
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--**********************************
+			Content body end
+		***********************************-->
+{%endblock%}
+	<script>
+		function TravlCarousel()
+			{
+
+				/*  testimonial one function by = owl.carousel.js */
+				jQuery('.guest-carousel').owlCarousel({
+					loop:false,
+					margin:15,
+					nav:true,
+					autoplaySpeed: 3000,
+					navSpeed: 3000,
+					paginationSpeed: 3000,
+					slideSpeed: 3000,
+					smartSpeed: 3000,
+					autoplay: false,
+					animateOut: 'fadeOut',
+					dots:true,
+					navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+					responsive:{
+						0:{
+							items:1
+						},
+						
+						480:{
+							items:1
+						},			
+						
+						767:{
+							items:1
+						},
+						1750:{
+							items:1
+						},
+						1920:{
+							items:1
+						},
+					}
+				})
+			}
+
+			jQuery(window).on('load',function(){
+				setTimeout(function(){
+					TravlCarousel();
+				}, 1000); 
+			});
+	</script>

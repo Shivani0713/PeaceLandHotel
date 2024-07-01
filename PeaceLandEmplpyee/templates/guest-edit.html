@@ -1,0 +1,369 @@
+
+{% extends 'bases.html' %}
+{% block content %}
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body">
+        <div class="container-fluid">
+            <!-- <div class="row page-titles">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Form</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Validation</a></li>
+                </ol>
+            </div> -->
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{{update.fstname}} {{update.lstname}}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-validation">
+                                <form class="needs-validation" novalidate  method="post" id="contactform" >
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="fstname">First Name
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="fstname" value="{{update.fstname}} "  name="fstname" placeholder="Please enter a First Name." required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a First Name.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="email">Email <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="email" name="email" value="{{update.email}}" placeholder="Please enter a Email." required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Email.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="mdate">From Date<span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="mdate" value="{{update.date|date:'d-m-Y'}}" name="date">
+                                                    <div class="invalid-feedback">
+                                                        Please select Date.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="adultNo">Adult Count
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="adultNo" value="{{update.adultNo}}" name="adultNo" placeholder="Please enter a Adult Count." required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Adult Count.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="room_CountNo">Room Count
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="number" class="form-control" id="room_CountNo" value="{{update.room_CountNo}}" name="room_CountNo" placeholder="Choose Room Count" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Room Count.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="address">Address <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <textarea class="form-control" id="address"  name="address" rows="5" placeholder="Please enter a Address" required>{{update.address}}</textarea>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Address.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="city">City<span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="city" name="city" placeholder="Please enter City."  value="{{update.city}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a City.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="country">Country<span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="country" name="country" placeholder="Please enter Country."  value="{{update.country}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Country.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="lstname">Last Name
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="lstname"  name="lstname" placeholder="Please enter a Last Name." value="{{update.lstname}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Last Name.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="phoneNo">Contact No
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="phoneNo" name="phoneNo" value="{{update.phoneNo}}" placeholder="Please enter a Contact Number" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Contact Number.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="mdateTo">To Date<span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="mdateTo" value="{{update.to_date|date:'d-m-Y'}}" name="dateTo">
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Email.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="childNo">Child Count
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="childNo" name="childNo" value="{{update.childNo}}" placeholder="Please enter a Child Count." required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Child Count.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="room">Room
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <select class="default-select wide form-control" id="room_type" name="room_type">
+                                                        <option value="{{update.room}}" selected>{{update.room}}</option>
+                                                        {% for room in rooms %}
+                                                            {% if room.RoomName != update.room %}
+                                                                <option value="{{room.RoomName}}">{{ room.RoomName }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please select Room.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="state">State <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="state" name="state" value="{{update.state}}" placeholder="Please enter state." required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a State.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="pincode">Pincode <span
+                                                        class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="pincode" name="pincode" value="{{update.pincode}}" placeholder="Please enter Pincode." required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a Pincode.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label class="col-lg-4 col-form-label" for="status">Payment Status
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="col-lg-6">
+                                                    <select class="default-select wide form-control" id="status" name="status">
+                                                        <option value="{{update.status}}" selected>{{update.status}}</option>
+                                                        {% for st in status %}
+                                                            {% if st.name != update.status %}
+                                                                <option value="{{st.name}}">{{st.name}}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please select Status.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="my-5 row">
+                                                <div class="col-lg-12 ms-auto text-center">
+                                                    <button type="button" onclick="BookForm()" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <script>
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     flatpickr("#mdate", { dateFormat: "d-m-Y" });
+        //     flatpickr("#mdateTo", { dateFormat: "d-m-Y" });
+        // });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function validatePhoneNumber(phone) {
+            const phonePattern = /^[0-9]{10}$/;
+            return phonePattern.test(phone);
+        }
+
+        function formatDate(dateString) {
+            var dateParts = dateString.split("-");
+            var formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+            return formattedDate;
+        }
+
+        function BookForm() {
+            const firstName = document.getElementById('fstname').value;
+            const lastName = document.getElementById('lstname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phoneNo').value;
+            const fromDate = document.getElementById('mdate').value;
+            const toDate = document.getElementById('mdateTo').value;
+            const adults = document.getElementById('adultNo').value;
+            const children = document.getElementById('childNo').value;
+            const roomType = document.querySelector('select[name="room_type"]').value;
+            const roomCount = document.getElementById("room_CountNo").value;
+            const country = document.getElementById('country').value;
+            const state = document.getElementById('state').value;
+            const city = document.getElementById('city').value;
+            const pincode = document.getElementById('pincode').value;
+            const address = document.getElementById('address').value;
+            const statusPay = document.querySelector('select[name="status"]').value;
+            console.log(statusPay)
+
+            if (!firstName) {
+                alert('Please enter your first name');
+                return false;
+            }
+
+            if (!lastName) {
+                alert('Please enter your last name');
+                return false;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!validatePhoneNumber(phone)) {
+                alert('Please enter a valid phone number with exactly 10 digits');
+                return false;
+            }
+
+            if (!fromDate) {
+                alert('Please select a valid From Date');
+                return false;
+            }
+
+            if (!toDate) {
+                alert('Please select a valid To Date');
+                return false;
+            }
+
+            if (!adults || isNaN(adults) || adults <= 0) {
+                alert('Please enter a valid number of adults');
+                return false;
+            }
+
+            if (!children || isNaN(children) || children < 0) {
+                alert('Please enter a valid number of children');
+                return false;
+            }
+
+            if (!roomType) {
+                alert('Please select a room type');
+                return false;
+            }
+
+            if (!roomCount) {
+                alert('Please select a room count');
+                return false;
+            }
+
+            if (!country) {
+                alert('Please enter your country');
+                return false;
+            }
+
+            if (!state) {
+                alert('Please enter your state');
+                return false;
+            }
+
+            if (!city) {
+                alert('Please enter your city');
+                return false;
+            }
+
+            if (!pincode) {
+                alert('Please enter your pincode');
+                return false;
+            }
+
+            if (!address) {
+                alert('Please enter your address');
+                return false;
+            }
+
+            if (!statusPay) {
+                alert('Please Select Payment Status');
+                return false;
+            }
+            // Format dates before submitting
+            document.getElementById('mdate').value = formatDate(fromDate);
+            document.getElementById('mdateTo').value = formatDate(toDate);
+
+            // Submit the form
+            document.getElementById('contactform').submit();
+        }
+    </script>
+{%endblock%}

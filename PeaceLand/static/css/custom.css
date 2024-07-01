@@ -1,0 +1,13 @@
+/*============================================================================================*/
+/* Your custom styles below */
+/*============================================================================================*/
+.list-group-item:hover{
+    background-color: hsl(34, 32%, 91%);
+    cursor:pointer;
+    color: white;
+}
+.datalist{
+    padding-left: 16px;
+    border: black solid 1px;
+    background: #eae8e6;
+}
