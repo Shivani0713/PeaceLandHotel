@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+
     <main>
         <div class="hero small-height jarallax" data-jarallax data-speed="0.2">
-            <img class="jarallax-img" src="/static/CustomImages/Resturant1.jpg" alt="">
+            <img class="jarallax-img" src="{% static 'CustomImages/Resturant1.jpg' %}" alt="">
             <div class="wrapper opacity-mask d-flex align-items-center justify-content-center text-center animate_hero" data-opacity-mask="rgba(0, 0, 0, 0.2)">
                 <div class="container">
                     <small class="slide-animated one">Luxury Hotel Experience</small>
@@ -76,7 +78,7 @@
                             </div>
                             <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
                                 <div class="card-body">
-                                    <div class="banner background-image" data-background="url(/static/img/restaurant/banner_bg_2.jpg)">
+                                    <div class="banner background-image" data-background="url({% static 'img/restaurant/banner_bg_2.jpg' %})">
                                         <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
                                             <div>
                                                <small>Starters Special Offer</small>
@@ -84,7 +86,7 @@
                                                 <p>Cold Cofee, Spring Roll and Paneer Tikka Masala</p>
                                                 <a href="menu-of-the-day" class="btn_1">View Menu</a>
                                             </div>
-                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                            <figure class="d-none d-lg-block"><img src="{% static 'img/restaurant/banner.svg' %}" alt="" width="200" height="200" class="img-fluid"></figure>
                                         </div>
                                         <!-- /wrapper -->
                                     </div>
@@ -122,7 +124,7 @@
                             </div>
                             <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
                                 <div class="card-body">
-                                    <div class="banner background-image" data-background="url(/static/img/restaurant/banner_bg.jpg)">
+                                    <div class="banner background-image" data-background="url({% static 'img/restaurant/banner_bg.jpg' %})">
                                         <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                                             <div>
                                                 <small>Special Offer</small>
@@ -130,7 +132,7 @@
                                                 <p>Naan, Seasonal Veg, Dal Makhani</p>
                                                 <a href="menu-of-the-day" class="btn_1">View Menu</a>
                                             </div>
-                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                            <figure class="d-none d-lg-block"><img src="{% static 'img/restaurant/banner.svg' %}" alt="" width="200" height="200" class="img-fluid"></figure>
                                         </div>
                                         <!-- /wrapper -->
                                     </div>
@@ -167,7 +169,7 @@
                             </div>
                             <div id="collapse-C" class="collapse" role="tabpanel" aria-labelledby="heading-C">
                                 <div class="card-body">
-                                    <div class="banner background-image" data-background="url(/img/restaurant/banner_bg_3.jpg)">
+                                    <div class="banner background-image" data-background="url({% static 'img/restaurant/banner_bg_3.jpg' %})">
                                         <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                                             <div>
                                                 <small>Desserts Special Offer</small>
@@ -175,7 +177,7 @@
                                                 <p>Cheese cake, Muffin, Sweet bread</p>
                                                 <a href="menu-of-the-day" class="btn_1">View Menu</a>
                                             </div>
-                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                            <figure class="d-none d-lg-block"><img src="{% static 'img/restaurant/banner.svg' %}" alt="" width="200" height="200" class="img-fluid"></figure>
                                         </div>
                                         <!-- /wrapper -->
                                     </div>
@@ -211,7 +213,7 @@
                             </div>
                             <div id="collapse-D" class="collapse" role="tabpanel" aria-labelledby="heading-D">
                                 <div class="card-body">
-                                    <div class="banner background-image" data-background="url(/img/restaurant/banner_bg_3.jpg)">
+                                    <div class="banner background-image" data-background="url({% static 'img/restaurant/banner_bg_3.jpg' %})">
                                         <div class="wrapper d-flex align-items-center justify-content-between opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                                             <div>
                                                 <small>Desserts Special Offer</small>
@@ -219,7 +221,7 @@
                                                 <p>Cheese cake, Muffin, Sweet bread</p>
                                                 <a href="menu-of-the-day" class="btn_1">View Menu</a>
                                             </div>
-                                            <figure class="d-none d-lg-block"><img src="/static/img/restaurant/banner.svg" alt="" width="200" height="200" class="img-fluid"></figure>
+                                            <figure class="d-none d-lg-block"><img src="{% static 'img/restaurant/banner.svg' %}" alt="" width="200" height="200" class="img-fluid"></figure>
                                         </div>
                                         <!-- /wrapper -->
                                     </div>

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from PeaceLandEmployee.views import *
+from PeaceLandEmplpyee.views import *
 
 urlpatterns = [
     path("Emplogin",loginView, name="emp_login"),

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -94,23 +96,28 @@ WSGI_APPLICATION = "HotelPeaceLand.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
+# -------------- For Upload AT Python ANywhere-------- #
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
+
+#------------- Made with Postgre Database -----------
 # DATABASES = {
 #     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "Hotel_DB",
+#         "USER": "postgres",
+#         "PASSWORD": 12345,
+#         "HOST": "localhost",
+#         "PORT": "5432",
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "Hotel_DB",
-        "USER": "postgres",
-        "PASSWORD": 12345,
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
 
 #username  - albert123
 #password - Manage12345
@@ -152,9 +159,43 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+# STATIC_URL = "static/"
+
+import os
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+#Absolute filesystem path to the directory that will hold static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#Additional location of static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
+
+#Media files(user-uploaded content)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH_USER_MODEL = 'freshWeb.CustomUser'
 STATIC_URL = "static/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+#########  EMAIL ################
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'djangoshivani@gmail.com'
+EMAIL_HOST_PASSWORD = 'uyex rxwr lddi ayzd'

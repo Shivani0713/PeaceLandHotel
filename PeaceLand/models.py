@@ -245,7 +245,7 @@ class TouristPlaces(models.Model):
 
 class Resturant(models.Model):
     name = models.CharField(max_length=256)
-    roomNo = models.CharField(null=True,blank=True)
+    roomNo = models.IntegerField(null=True,blank=True)
     phoneNo = models.BigIntegerField()  
     Email =  models.EmailField()
     address = models.TextField()
